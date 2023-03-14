@@ -1,5 +1,7 @@
 package br.com.desafiosebrae.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,13 @@ public class ContaService {
 
     public Conta salvar(Conta conta){
         return contaRepository.save(conta);
+    }
+
+    public Optional<Conta> buscarPorNome(String nome) {
+        return contaRepository.findOneByNome(nome);
+    }
+
+    public void deletar(Conta conta){
+        contaRepository.delete(conta);
     }
 }
